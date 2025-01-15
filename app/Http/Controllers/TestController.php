@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Responses\HTTPResponse;
-use App\Helpers\Responses\TransactionResponse;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -15,12 +14,10 @@ class TestController extends Controller
                 'nombre' => 'required|string',
                 'edad' => 'required|integer',
             ]);
-
-
             $a = [];
             return $a["data"];
         } catch (\Exception $e) {
-            return HTTPResponse::Response400("Algunos datos no tienen el formato esperado", $e);
+            return HTTPResponse::Response401("Algunos datos no tienen el formato esperado", $e);
         }
     }
     public function index()

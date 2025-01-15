@@ -2,7 +2,7 @@
 
 namespace App\Enums\HTTP;
 
-enum Response: int
+enum Status: int
 {
     // 1xx: Informational
   case HTTP100 = 100;

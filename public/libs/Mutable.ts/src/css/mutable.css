@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+:root {
+  --color-icon: rgb(55 65 81);
+}
+body {
+  background: white;
+}
+/* HEADER */
+.mutable-actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 50px;
+  font-family: "Open Sans", sans-serif;
+}
+.mutable-actions .left,
+.mutable-actions .right {
+  display: flex;
+  gap: 10px;
+}
+.mutable-actions .button-container {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid rgb(209, 213, 219, 1);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  border-radius: 6px;
+}
+/* Searcher */
+.mutable-actions .button-container i {
+  padding: 0px 5px;
+  color: var(--color-icon);
+}
+.mutable-actions .button-container .searcher {
+  height: 100%;
+  border: none;
+  outline: none;
+}
+/* EndSearcher */
+/* Dropdown */
+.dropdown-button {
+  background: white;
+  padding: 15px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+.dropdown-button i {
+  color: rgb(102, 101, 101) !important;
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow-y: scroll;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1;
+  transition: max-height 0.3s ease-out;
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #f9f9f9;
+}
+
+.dropdown-content button:hover {
+  background-color: #f1f1f1;
+}
+
+.show {
+  max-height: 300px;
+}
+/* EndDropDown */
+
+/* Columns */
+.column-hide-control {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--color-icon);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.column-hide-control:hover {
+  background-color: #f3f4f6;
+  border-radius: 4px;
+}
+.check {
+  accent-color: #3b82f6;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+/* ENDColumns */
+/* MediaQuerys */
+@media screen and (max-width: 768px) {
+  .mutable-actions {
+    display: block;
+    height: auto;
+  }
+  .mutable-actions .left,
+  .mutable-actions .right {
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+/* EndMediaQueries */
+/* END HEADER */
+.mutable-table {
+  width: 100%;
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow-x: scroll;
+}
+
+.mutable-table table {
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  border-collapse: collapse !important;
+  border-spacing: 0px;
+  font-size: 13px;
+  color: var(--color-icon);
+}
+
+.mutable-table table th,
+.mutable-table table td {
+  padding: 7px 10px !important;
+  text-align: left;
+  white-space: nowrap;
+  border: none;
+}
+
+.mutable-table table thead tr th {
+  background: rgb(234, 234, 234);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mutable-table table tbody tr:nth-child(even) {
+  background-color: #f4f4f4a2;
+}
+.mutable-table table tbody tr:hover {
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+
+/* Mutable Buttons */
+.mutable-container-buttons {
+  display: flex;
+  gap: 5px;
+}
+.mutable-container-buttons .mutable-btn {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 0px 2px 2px rgba(175, 175, 175, 0.1);
+  border-radius: 3px;
+}
+
+.mutable-container-buttons .mutable-btn.warning {
+  background: #ffe57f;
+  color: #ccae02;
+}
+
+.mutable-container-buttons .mutable-btn.info {
+  background: #bbdefb;
+  color: #1e88e5;
+}
+
+.mutable-container-buttons .mutable-btn.success {
+  background: #c8e6c9;
+  color: #43a047;
+}
+
+.mutable-container-buttons .mutable-btn.danger {
+  background: #ffcdd2;
+  color: #ff0000;
+}
+
+/* END Mutable Buttons */
+
+.mutable-footer .mutable-page-selector {
+  display: flex;
+  padding: 5px;
+  font-family: "Open Sans", sans-serif;
+  gap: 5px;
+}
+.mutable-footer .mutable-page-selector div {
+  padding: 10px;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mutable-footer .mutable-page-selector .page:not(.separator) {
+  cursor: pointer;
+  color: #9e9e9e;
+  font-weight: 600;
+}
+
+.mutable-footer .mutable-page-selector .page.active {
+  background: rgb(235, 235, 235);
+  border-radius: 100%;
+  color: #272727;
+  box-shadow: 1px 1px 3px 1px rgba(114, 113, 113, 0.2);
+}
+.mutable-footer .mutable-page-selector .page:not(.separator):hover {
+  background: rgb(235, 235, 235);
+  border-radius: 100%;
+  color: #272727;
+  box-shadow: 1px 1px 5px 1px rgba(114, 113, 113, 0.349);
+}

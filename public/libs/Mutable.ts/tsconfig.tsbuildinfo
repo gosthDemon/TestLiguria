@@ -1,0 +1,1 @@
+{"root":["./dist/ts/main.ts","./dist/ts/entities/mutableentity.ts","./dist/ts/interfaces/filters.ts","./dist/ts/interfaces/inmutablehash.ts","./dist/ts/interfaces/localstorage.ts","./dist/ts/interfaces/mutable.ts","./dist/ts/interfaces/mutablelocalstorage.ts"],"version":"5.6.3"}

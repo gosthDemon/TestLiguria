@@ -1,0 +1,575 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url(default.css);
+@import url(grid.css);
+:root {
+    --primary: #17bfc1 !important;
+    --primary-transparent: rgba(23, 190, 193, 0.15) !important;
+    --primary-focus: #01b6b9 !important;
+    --secondary: #fff8f8b6 !important;
+    /* Background */
+    --bg: rgb(246, 246, 246) !important;
+    --bg-components: rgb(255, 255, 255) !important;
+    --border-elements: 0px 10px 5px 2px #c8d5dc !important;
+    /* Alerts */
+    --warning: #f1cc47 !important;
+    --success: #39a866 !important;
+    --danger: #dd4040 !important;
+    --info: #407fdd !important;
+    /* Buttons and Icons */
+    --icon-gray: #718293 !important;
+    --button-gray: rgb(209, 209, 209) !important;
+    --button-shadows: 2px 2px 10px 2px rgba(38, 103, 243, 0.082) !important;
+    /* Text */
+    --font-family: "Public Sans", "Poppins", "Nunito", sans-serif !important;
+    --body-text: #383838 !important;
+    --secondary-text: #6b7c8e !important;
+    --active-text: #a3a3a3 !important;
+    --tertiary-text: #178a8b !important;
+    --placeholder-text: #c5c5c5 !important;
+    --input-shadows: 2px 2px 3px 2px rgba(38, 103, 243, 0.04) !important;
+    /* BgTransparent */
+    --bg-transparent-danger: rgb(255, 138, 138) !important;
+    --bg-transparent-warning: rgba(233, 221, 57, 0.808) !important;
+    --bg-transparent-info: rgba(91, 173, 221, 0.719) !important;
+    --bg-transparent-success: rgb(121, 207, 140) !important;
+}
+
+/* DEFAULT */
+a {
+    text-decoration: none !important;
+    color: none;
+}
+/* END DEFAULT */
+
+/* SCROLLBAR */
+/* Todo lo basado en Chromium */
+::-webkit-scrollbar {
+    width: 2px !important;
+    background: var(--bg-components);
+    transition: 0.5s !important;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(177, 177, 177, 0.3) !important;
+    border-radius: 2px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--bg);
+    border-radius: 2px !important;
+}
+::-webkit-scrollbar-track {
+    width: 6px !important;
+    background-color: var(--bg-components) !important;
+}
+/* Mozilla */
+::-moz-scrollbar {
+    width: 2px !important;
+}
+::-moz-scrollbar-track {
+    background-color: var(--bg-components) !important;
+}
+/* END SCROLLBAR */
+
+body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+/* MENU */
+#menu-section {
+    transition: 0.5s all;
+    background: var(--bg-components);
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 20;
+    white-space: nowrap !important;
+}
+
+#menu-section.close-menu {
+    width: 0px;
+    overflow: hidden;
+}
+
+#menu-section.open-menu {
+    width: 260px;
+    position: fixed;
+    overflow: initial;
+    z-index: 11;
+    box-shadow: var(--border-elements);
+}
+
+#menu-section .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 60px;
+}
+
+#menu-section .header .logo {
+    height: calc(100% - 20px);
+    padding: 0px;
+}
+
+#menu-section .header .logo img {
+    height: 100%;
+}
+
+#menu-section .header .button-menu-close {
+    position: absolute;
+    display: fixed;
+    justify-content: center;
+    align-items: center;
+    right: -18px;
+    z-index: 21;
+}
+
+#menu-section .header .button-menu-close button {
+    width: 36px;
+    height: 36px;
+    padding: 0px;
+    border-radius: 23px;
+    font-size: 14px;
+
+    border: none;
+    background: var(--primary);
+    border: 6px solid var(--bg);
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1200px) {
+    #menu-section .header .button-menu-close {
+        display: none;
+    }
+}
+
+#menu-section .menu {
+    width: 100%;
+    height: calc(100vh - 60px);
+    box-sizing: border-box;
+    padding: 10px 10px 0px 20px;
+    font-family: var(--font-family);
+    color: var(--secondary-text);
+    font-weight: 400;
+    font-size: 15px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#menu-section .menu .simple {
+    width: 100% !important;
+    padding: 10px;
+    margin: 3px 0px;
+}
+
+#menu-section .menu .simple:hover {
+    cursor: pointer;
+    background: var(--bg-hover);
+    border-radius: 5px;
+}
+
+#menu-section .menu .simple i {
+    width: 30px;
+
+    text-align: center;
+    position: relative;
+}
+
+#menu-section .menu .simple.active {
+    width: 100%;
+    background: var(--primary-transparent);
+    border-radius: 5px;
+    color: var(--primary);
+    font-weight: 600;
+    padding: 9px;
+}
+
+#menu-section .section {
+    text-transform: uppercase;
+    padding: 15px 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    letter-spacing: -1px;
+    font-stretch: -2px;
+    color: var(--icon-gray);
+}
+
+#menu-section .section span {
+    margin-left: 10px;
+    width: 100%;
+    height: 1px;
+    background: rgb(158, 154, 154);
+}
+
+#menu-section .menu .multiply .item {
+    padding: 9px;
+    margin: 3px 0px;
+    position: relative;
+}
+
+#menu-section .menu .multiply .item:hover {
+    cursor: pointer;
+    background: var(--bg-hover);
+    border-radius: 5px;
+}
+
+#menu-section .menu .multiply .item i {
+    width: 30px;
+    text-align: center;
+}
+
+#menu-section .menu .multiply .item i.arrow {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.5s;
+}
+
+#menu-section .menu .multiply .item.open {
+    background: var(--bg-hover);
+    border-radius: 5px;
+}
+
+#menu-section .menu .multiply .item.active {
+    background: var(--primary-transparent);
+    border-radius: 5px;
+    color: var(--primary);
+    font-weight: 600;
+    padding: 9px;
+}
+#menu-section .menu div {
+    position: relative;
+    color: var(--secondary-text);
+}
+#menu-section .menu .simple.active::after {
+    content: "";
+    background: var(--primary);
+    position: absolute;
+    right: -10px;
+    top: -1px;
+    border-radius: 5px 0px 0px 4px;
+    width: 3px;
+    height: 40px;
+}
+#menu-section .menu .multiply a.active::after {
+    content: "";
+    background: var(--danger);
+    position: absolute;
+    right: -10px;
+    top: -1px;
+    border-radius: 5px 0px 0px 4px;
+    width: 3px;
+    height: 40px;
+}
+#menu-section .menu .multiply .item.open i.arrow {
+    transform: translateY(-50%) rotate(-90deg);
+    transition: 0.5s;
+}
+
+#menu-section .menu .multiply .sub-menu {
+    height: 0px;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: 0.5s;
+    padding: 0px 0px 0px 9px;
+    margin: 0px;
+}
+
+#menu-section .menu .multiply .sub-menu.open {
+    transition: 0.5s;
+}
+
+#menu-section .menu .multiply .sub-menu li {
+    list-style: none;
+    padding: 9px 9px 9px 0px;
+    margin: 3px 0px;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    color: var(--secondary-text);
+}
+
+#menu-section .menu .multiply .sub-menu li:hover {
+    cursor: pointer;
+    background: var(--bg-hover);
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#menu-section .menu .multiply .sub-menu li.active {
+    font-weight: 600;
+    color: var(--active-text);
+}
+
+#menu-section .menu .multiply .sub-menu li i {
+    text-align: center;
+    width: 30px;
+    margin-right: 10px;
+    font-size: 6px;
+    color: #718293;
+}
+
+#menu-section .menu .multiply .sub-menu li.active i {
+    color: var(--primary);
+    font-size: 14px;
+}
+/* END MENU */
+/* BODY */
+#body-section {
+    width: calc(100% - 260px);
+    background: var(--bg);
+    min-height: 100vh;
+    margin: 0px 0px 0px 260px;
+    transition: 0.5s;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 25px 30px 25px 30px;
+}
+
+#body-section.expand-body {
+    width: 100%;
+    margin: 0px;
+    transition: 0.5s;
+}
+#body-section .navbar {
+    padding: 0px;
+}
+#body-section nav#navbar {
+    width: 100%;
+    height: 60px;
+    background: var(--bg-components);
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 0px 25px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.05);
+}
+
+#body-section nav#navbar #button-menu-open {
+    padding: 0px 15px 0px 10px;
+    cursor: pointer;
+}
+
+#body-section nav#navbar i {
+    font-size: 18px;
+    color: var(--icon-gray);
+}
+
+#body-section nav#navbar input {
+    border: none !important;
+    font-size: 15px;
+    margin-left: 20px;
+    color: var(--secondary-text);
+    background: var(--bg-components);
+    outline: none;
+    display: flex;
+    width: 400px;
+    min-width: 50px;
+    box-sizing: border-box;
+    box-shadow: none !important;
+}
+
+#body-section nav#navbar input::placeholder {
+    color: rgb(197, 197, 197);
+}
+
+#body-section nav#navbar input:focus-within::placeholder {
+    transform: translateX(5px);
+    transition: 0.5s all;
+}
+
+#body-section nav#navbar .action-bars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    padding: 0px 0px 0px 10px;
+}
+
+#body-section nav#navbar .action-bars i {
+    padding: 0px 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#body-section nav#navbar .action-bars .profile-picture-container {
+    margin-left: 10px;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#body-section nav#navbar .action-bars .profile-picture-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(140deg) brightness(0.7);
+}
+
+@media screen and (min-width: 1200px) {
+    #body-section nav#navbar #button-menu-open {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    #body-section nav#navbar .action-bars i {
+        display: none;
+    }
+}
+
+/* END BODY */
+/* PROFILE*/
+#profile-section {
+    position: fixed;
+    right: -30px;
+    z-index: 10;
+    background: var(--bg-components);
+    width: 0px;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: 0.5s;
+    white-space: nowrap !important;
+    box-shadow: 10px 10px 10px 10px rgba(52, 52, 52, 0.3);
+}
+
+#profile-section.open-profile {
+    width: 260px;
+    overflow: initial;
+}
+
+#profile-section .button-profile-close {
+    position: absolute;
+    display: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 12px;
+    left: -18px;
+    z-index: 13;
+    display: none;
+}
+
+#profile-section .button-profile-close button {
+    width: 36px;
+    height: 36px;
+    padding: 0px;
+    border-radius: 23px;
+    font-size: 14px;
+    border: none;
+    background: var(--primary);
+    border: 6px solid var(--bg);
+    color: white;
+    cursor: pointer;
+}
+
+#profile-section .container-profile-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile-section .container-profile-image img {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    border: 100%;
+}
+
+#profile-section .container-profile-name {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+    font-weight: 300;
+}
+#profile-section .container-profile-role {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+    font-weight: 300;
+    color: var(--primary);
+    font-size: 12px;
+}
+
+#profile-section .action-bars {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#profile-section .action-bars i {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#profile-section .container-profile-menu {
+    box-sizing: border-box;
+    height: calc(100vh - 243px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#profile-section .container-profile-menu ul {
+    padding: 20px 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+#profile-section .container-profile-menu ul li {
+    padding: 10px 10px 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: var(--font-family);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+#profile-section .container-profile-menu ul li i {
+    text-align: center;
+    width: 30px;
+}
+
+#profile-section .button-profile-logout {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0px;
+    bottom: 0px;
+}
+
+#profile-section .button-profile-logout button {
+    padding: 6px 32px;
+    border: none;
+    background: var(--button-gray);
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+#profile-section .button-profile-logout button:hover {
+    background: var(--primary);
+    color: white;
+    transition: 0.3s;
+}
+/* END PROFILE */

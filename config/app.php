@@ -46,6 +46,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application API Debug Mode
+    |--------------------------------------------------------------------------
+    |
+    | The APIDebug parameter controls how API responses behave when errors 
+    | occur. Depending on its value (true or false), the responses will 
+    | either include or exclude additional debugging information, such as 
+    | stack trace details and the file where the error occurred. This is 
+    | particularly useful for debugging during development.
+    |
+    */
+    'api_debug' => (bool) env('API_DEBUG', false),
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------
     |

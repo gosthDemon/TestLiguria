@@ -38,8 +38,10 @@ class HTTPResponse
       $responseData['data'] = $data;
     } else {
       if ($data instanceof \Exception) {
-        $responseData['errors'] = $data instanceof \Illuminate\Validation\ValidationException ? $data->errors() : $data->getMessage();
-        if (config('app.debug')) {
+        $responseData['errors'] = $data instanceof \Illuminate\Validation\ValidationException ? $data->errors() : [];
+        $responseData['status'] = $data instanceof \Illuminate\Validation\ValidationException ? Status::HTTP422 : $status;
+        $responseData['phrase'] = $data instanceof \Illuminate\Validation\ValidationException ? $code->getMessage() : $phrase;
+        if (config('app.api_debug') == true) {
           $responseData['errors']['debug'] = [
             'message' => $data->getMessage(),
             'file' => $data->getFile(),
@@ -231,6 +233,13 @@ class HTTPResponse
   public static function Response408(string $message, array|\Exception $data = [], bool $isJsonResponse = true)
   {
     return self::RESPONSE(Status::HTTP408, $message, $data, $isJsonResponse);
+  }
+  /**
+   * Unprocessable Entity, the server understands the request's content type and syntax but cannot process it due to semantic errors.
+   */
+  public static function Response422(string $message, array|\Exception $data = [], bool $isJsonResponse = true)
+  {
+    return self::RESPONSE(Status::HTTP422, $message, $data, $isJsonResponse);
   }
   /**
    * Too Many Requests, the user has sent too many requests in a given period.

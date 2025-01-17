@@ -1,6 +1,5 @@
 <template>
     <section id="profile-section" :class="{ 'open-profile': isProfileOpen }">
-        Hola
         <div
             class="button-profile-closse"
             id="button-profile-close"

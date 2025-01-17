@@ -4,6 +4,7 @@
 
 <script>
 import FormComponent from "@/components/SolicitudPuerta/Form.vue";
+import EditComponent from "@/components/SolicitudPuerta/Edit.vue";
 import TableComponent from "@/components/SolicitudPuerta/Table.vue";
 
 export default {
@@ -16,7 +17,11 @@ export default {
     },
     computed: {
         currentComponent() {
-            return this.action === "create" ? FormComponent : TableComponent;
+            return this.action === "create"
+                ? FormComponent
+                : this.action === "edit"
+                ? EditComponent
+                : TableComponent;
         },
     },
 };

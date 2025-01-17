@@ -34,6 +34,7 @@ enum Status: int
   case HTTP404 = 404;
   case HTTP405 = 405;
   case HTTP408 = 408;
+  case HTTP422 = 422;
   case HTTP429 = 429;
 
     // 5xx: Server Errors
@@ -81,6 +82,7 @@ enum Status: int
       self::HTTP404 => 'Not Found',
       self::HTTP405 => 'Method Not Allowed',
       self::HTTP408 => 'Request Timeout',
+      self::HTTP429 => 'Unprocessable Entity',
       self::HTTP429 => 'Too Many Requests',
 
       // 5xx: Server Errors

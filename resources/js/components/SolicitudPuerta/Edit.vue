@@ -1,7 +1,7 @@
 <template>
     <div class="card row mt-4">
         <div class="col-12 pt-4">
-            <p class="title center">Solicitar Puerta</p>
+            <p class="title center">Editar Solicitud de Puerta</p>
         </div>
         <div class="col-12 col-md-6 p-7">
             <form @submit.prevent="handleSubmit">
@@ -56,7 +56,7 @@
                 </div>
                 <br />
                 <button type="submit" class="ui-button ui-btn-primary">
-                    Guardar
+                    Guardar Cambios
                 </button>
             </form>
         </div>
@@ -74,22 +74,51 @@ export default {
             ancho: 24,
             modelo: "P400",
             precio: 300,
+            solicitudId: null,
         };
     },
     methods: {
+        async fetchSolicitudData() {
+            try {
+                console.log(this.solicitudId);
+                const response = await fetch(
+                    `/api/solicitud-puertas/edit/${this.solicitudId}`
+                );
+                let res = await response.json();
+                if (!response.ok) {
+                    const errorData = res.data;
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: res.data,
+                    });
+                    return;
+                }
+                let data = res.data;
+                this.modelo = data.modelo;
+                this.alto = data.alto;
+                this.ancho = data.ancho;
+                this.precio = data.precio;
+                this.drawDoor(); // Dibujar la puerta con los datos cargados
+            } catch (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Ocurrió un error",
+                    text: error.message,
+                });
+            }
+        },
         drawDoor() {
             const canvas = this.$refs.doorCanvas;
             const ctx = canvas.getContext("2d");
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             this.precio = 300 + (this.alto * this.ancho - 1920) * 0.25;
-            // Escalar dimensiones para que se ajusten al canvas y centramos
             const scale = 4;
             const doorWidth = this.ancho * scale;
             const doorHeight = this.alto * scale;
             const x = (canvas.width - doorWidth) / 2;
             const y = (canvas.height - doorHeight) / 2;
 
-            // Dibujar el rectángulo de la puerta y las cotas
             ctx.strokeStyle = "black";
             ctx.lineWidth = 2;
             ctx.strokeRect(x, y, doorWidth, doorHeight);
@@ -97,7 +126,6 @@ export default {
             ctx.font = "12px Arial";
             ctx.fillStyle = "black";
 
-            //Cota horizontal (ancho)
             ctx.beginPath();
             ctx.moveTo(x, y + doorHeight + 20);
             ctx.lineTo(x + doorWidth, y + doorHeight + 20);
@@ -108,14 +136,6 @@ export default {
                 y + doorHeight + 35
             );
 
-            ctx.beginPath();
-            ctx.moveTo(x, y + doorHeight + 15);
-            ctx.lineTo(x, y + doorHeight + 25);
-            ctx.moveTo(x + doorWidth, y + doorHeight + 15);
-            ctx.lineTo(x + doorWidth, y + doorHeight + 25);
-            ctx.stroke();
-
-            // Cota vertical (alto)
             ctx.beginPath();
             ctx.moveTo(x - 20, y);
             ctx.lineTo(x - 20, y + doorHeight);
@@ -142,13 +162,16 @@ export default {
             };
 
             try {
-                const response = await fetch("/api/solicitud-puertas", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(data),
-                });
+                const response = await fetch(
+                    `/api/solicitud-puertas/${this.solicitudId}`,
+                    {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                    }
+                );
                 if (!response.ok) {
                     const errorData = await response.json();
                     Swal.fire({
@@ -160,13 +183,9 @@ export default {
                     const result = await response.json();
                     Swal.fire({
                         icon: "success",
-                        title: "Solicitud creada con éxito",
+                        title: "Solicitud actualizada con éxito",
                         text: result.message,
                     });
-                    this.alto = 80;
-                    this.ancho = 24;
-                    this.precio = 300;
-                    this.drawDoor();
                 }
             } catch (error) {
                 Swal.fire({
@@ -178,7 +197,10 @@ export default {
         },
     },
     mounted() {
-        this.drawDoor();
+        const pathname = window.location.pathname;
+        const segments = pathname.split("/");
+        this.solicitudId = segments.filter((segment) => segment !== "").pop();
+        this.fetchSolicitudData();
     },
 };
 </script>

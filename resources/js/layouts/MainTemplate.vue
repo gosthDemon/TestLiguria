@@ -13,9 +13,6 @@
             @toggle-menu="handleToggleMenu"
             @toggle-profile="toggleProfile"
         ></body-section>
-        <main>
-            <router-view></router-view>
-        </main>
     </div>
 </template>
 
@@ -41,15 +38,25 @@ export default {
     methods: {
         handleCloseMenu() {
             this.isMenuClosed = true;
-            this.isBodyExpanded = true;
+            if (window.innerWidth > 992) {
+                this.isBodyExpanded = true;
+            }
         },
         toggleProfile() {
             this.isProfileOpen = !this.isProfileOpen;
         },
         handleToggleMenu() {
             this.isMenuClosed = !this.isMenuClosed;
-            this.isBodyExpanded = !this.isBodyExpanded;
+            if (window.innerWidth > 992) {
+                this.isBodyExpanded = !this.isBodyExpanded;
+            }
         },
+    },
+    mounted() {
+        if (window.innerWidth < 992) {
+            this.isMenuClosed = true;
+            this.isBodyExpanded = true;
+        }
     },
 };
 </script>

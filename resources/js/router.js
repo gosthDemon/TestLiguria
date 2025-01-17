@@ -9,7 +9,17 @@ const routes = [
     {
         path: "/solicitud-puerta/:action",
         component: SolicitudPuertaPage,
-        props: (route) => ({ action: route.params.action }),
+        props: (route) => ({
+            action: route.params.action,
+        }),
+    },
+    {
+        path: "/solicitud-puerta/:action/:id",
+        component: SolicitudPuertaPage,
+        props: (route) => ({
+            action: route.params.action,
+            id: route.params.id || null,
+        }),
     },
 ];
 const router = createRouter({

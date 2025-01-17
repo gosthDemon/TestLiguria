@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/fontAwesome.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/components.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('libs/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{URL::asset('libs/Mutable.ts/src/css/mutable.css')}}">
 </head>
 <body>
     <div id="app">

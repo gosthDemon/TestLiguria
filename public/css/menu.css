@@ -133,7 +133,6 @@ body {
     padding: 0px;
     border-radius: 23px;
     font-size: 14px;
-
     border: none;
     background: var(--primary);
     border: 6px solid var(--bg);
@@ -142,9 +141,9 @@ body {
 }
 
 @media screen and (min-width: 1200px) {
-    #menu-section .header .button-menu-close {
+    /* #menu-section .header .button-menu-close {
         display: none;
-    }
+    } */
 }
 
 #menu-section .menu {
@@ -188,7 +187,9 @@ body {
     font-weight: 600;
     padding: 9px;
 }
-
+.fa-bars {
+    cursor: pointer;
+}
 #menu-section .section {
     text-transform: uppercase;
     padding: 15px 0px;

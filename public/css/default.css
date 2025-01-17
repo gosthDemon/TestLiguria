@@ -201,7 +201,6 @@
     padding: 35px !important;
 }
 
-
 /* Margin Top (mt-) */
 .mt-1 {
     margin-top: 5px !important;
@@ -317,12 +316,13 @@
     margin: 35px !important;
 }
 
-
 /* TIPOGRAFY */
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--font-family);
     margin: 0px;
-    width: 100%;
     text-align: center;
 }
 h1 {
@@ -340,7 +340,7 @@ h3 {
 h4 {
     font-size: 1.5em;
 }
-.title{
+.title {
     font-size: 1.75em;
     padding-bottom: 20px;
     font-family: var(--font-family);
@@ -349,17 +349,17 @@ h4 {
     font-weight: 400;
     text-align: left;
 }
-.title.center{
+.title.center {
     text-align: center;
 }
-.title.right{
+.title.right {
     text-align: right;
 }
 
 /* END TIPOGRAFY */
 
 /* HELPERS */
-.hide{
+.hide {
     display: none !important;
 }
 /* END HELPERS */
